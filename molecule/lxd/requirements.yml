@@ -1,0 +1,5 @@
+---
+roles:
+  - name: "lordoftheflies.role_java"
+    version: "v2.0.1"
+    source: https://galaxy.ansible.com

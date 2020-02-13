@@ -280,12 +280,12 @@
     current_nexus_admin_password: "{{ nexus_install_admin_password }}"
   when: nexus_data_dir_contents.stdout|length > 0
 
-- name: "Subsequent re-provision admin password: {{ nexus_admin_password }}"
+- name: "Subsequent re-provision admin password = {{ nexus_admin_password }}"
   become: true
   set_fact:
     current_nexus_admin_password: "{{ nexus_admin_password }}"
   when: nexus_data_dir_contents.stdout|length > 0
-  false_log: true
+#  false_log: true
 
 - include: declare_script_each.yml
   become: true

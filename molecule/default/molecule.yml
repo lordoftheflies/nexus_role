@@ -8,17 +8,24 @@ lint:
   options:
     config-file: .ansible-lint
 platforms:
-  - name: role_nexus-default-xenial
-    source:
-      alias: ubuntu/xenial/amd64
-  - name: role_nexus-default-eon
-    source:
-      type: image
-      alias: ubuntu/eon/amd64
-  - name: role_nexus-default-disco
+  - name: ubuntu-xenial
+    profiles: ['default', 'lxd', 'vagrant']
+    architecture: "x86_64"
     source:
       type: image
-      alias: ubuntu/disco/amd64
+      mode: pull
+      server: "images.linuxcontainers.org"
+      protocol: "lxd"
+      alias: "ubuntu/xenial"
+  - name: ubuntu-disco
+    profiles: ['default']
+    #    architecture: "x86_64"
+    source:
+      type: image
+      mode: pull
+      server: "https://images.linuxcontainers.org"
+      protocol: "lxd"
+      alias: "ubuntu/disco"
 provisioner:
   name: ansible
   lint:
