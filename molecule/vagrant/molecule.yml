@@ -4,16 +4,20 @@ dependency:
 driver:
   name: vagrant
   provider:
-    name: virtualbox
+    name: libvirt
+    type: libvirt
+    options:
+      memory: 4096
+      cpus: 2
 lint:
   name: yamllint
   options:
     config-file: .ansible-lint
 platforms:
-  - name: role_nexus-xenial
-    box: cjsteel/xenial
-  - name: role_nexus-bionic
-    box: cjsteel/bionic
+  - name: xenial
+    box: lordoftheflies/xenial
+  - name: disco
+    box: lordoftheflies/disco
 provisioner:
   name: ansible
   lint:

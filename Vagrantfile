@@ -8,100 +8,45 @@
 
   boxes = [
     {
-      :name => "stretch",
-      :distribution => "debian",
-      :box => "debian/stretch64",
-      :version => "9.4.0",
-#      :box => "natx/debian-stretch-amd64-desktop",
-#      :version => "0.0.5",
-      :ip => '10.0.0.10',
-      :cpu => "50",
-#      :disk_size => "10GB",
-      :ram => "256"
-    },
-    {
       :name => "jessie",
       :distribution => "debian",
-      :box => "debian/stretch64",
+      :box => "debian/jessie64",
       :version => "9.4.0",
-#      :box => "gtemgoua/debian-dev-workstation",
-#      :version => "0.0.1",
       :ip => '10.0.0.11',
       :cpu => "50",
-#      :disk_size => "10GB",
+      :disk_size => "10GB",
       :ram => "256"
     },
     {
-      :name => "precise",
+      :name => "disco",
       :distribution => "ubuntu",
-      :box => "ubuntu/precise64",
+      :box => "ubuntu/disco64",
       :version => "20170427.0.0",
-#      :box => "box-cutter/ubuntu1204-desktop",
-#      :version => "2.0.26",
       :ip => '10.0.0.21',
       :cpu => "50",
-#      :disk_size => "10GB",
+      :disk_size => "10GB",
       :ram => "256"
     },
-    {
-      :name => "trusty",
-      :distribution => "ubuntu",
-      :box => "ubuntu/trusty64",
-      :version => "20180510.0.5",
-#      :box => "box-cutter/ubuntu1404-desktop",
-#      :version => "2.0.26",
-      :ip => '10.0.0.22',
-      :cpu => "50",
-#      :disk_size => "10GB",
-      :ram => "256"
-    },
+
     {
       :name => "xenial",
       :distribution => "ubuntu",
       :box => "ubuntu/xenial64",
       :version => "20180522.0.0",
-#      :box => "jcaraballo/ubuntu-desktop-xenial",
-#      :version => "0.0.3",
       :ip => '10.0.0.23',
       :cpu => "50",
-#      :disk_size => "10GB",
+      :disk_size => "10GB",
       :ram => "256"
     },
-    {
-      :name => "bionic",
-      :distribution => "ubuntu",
-      :box => "ubuntu/bionic64",
-      :version => "20180717.1.0",
-#      :version => "20180522.0.0",
-#      :box => "teknikersai/ubuntu-desktop-bionic64",
-#      :version => "0.0.2",
-      :ip => '10.0.0.24',
-      :cpu => "50",
-#      :disk_size => "10GB",
-      :ram => "256"
-    },
-    {
-      :name => "centos6",
-      :distribution => "redhat",
-      :box => "centos/6",
-      :version => "1804.02",
-#      :box => "Mitsutoshi-NAKANO/CentOS6jaDesktop",
-#      :version => "0.6.0",
-      :ip => '10.0.0.31',
-      :cpu => "50",
-#      :disk_size => "10GB",
-      :ram => "256"
-    },
+
     {
       :name => "centos7",
       :distribution => "redhat",
       :box => "centos/7",
       :version => "1804.02",
-#      :box => "dalmait/centos7",
-#      :version => "0.1.8",
       :ip => '10.0.0.32',
       :cpu => "50",
-#      :disk_size => "10GB",
+      :disk_size => "10GB",
       :ram => "256"
     },
   ]
@@ -119,16 +64,16 @@
 #      config.vbguest.iso_upload_path = "/tmp"
       config.vm.define box[:name] do |vms|
         vms.vm.box = box[:box]
- #       vms.disksize.size = box[:disk_size]
+        vms.disksize.size = box[:disk_size]
         vms.vm.box_version = box[:version]
         vms.vm.guest = box[:distribution]
         vms.vm.hostname = box[:name]
   #      vms.vm.synced_folder ".vagrant/synced", "/home/vagrant"
-        vms.vm.provider "libvirt" do |vbox|
-#           vbox.gui = gui
-#           vbox.name = "#{role}-#{box[:name]}"
-#           vbox.customize ["modifyvm", :id, "--cpuexecutioncap", box[:cpu]]
-#           vbox.customize ["modifyvm", :id, "--memory", box[:ram]]
+
+
+        config.vm.provider :libvirt do |libvirt|
+            libvirt.cpus = 2
+            libvirt.cputopology :sockets => '2', :cores => '2', :threads => '1'
         end
 
         vms.vm.network :private_network, ip: box[:ip]
@@ -141,9 +86,9 @@
           ansible.inventory_filename='generated_inventory'
           # optional: add a group listing all vagrant machines
           ansible.groups = {
-            'debian' => ["stretch"],
-            'ubuntu' => ["xenial", "trusty"],
-            'redhat' => ["centos6", "centos7"],
+            'debian' => ["jessie"],
+            'ubuntu' => ["xenial", "disco"],
+            'redhat' => ["centos7"],
           #  '_provided_by_vagrant_'=> HOSTS.keys,
           }
         vms.vm.provision "shell",
