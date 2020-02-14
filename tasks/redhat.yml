@@ -1,5 +1,5 @@
 ---
-# roles/role_nexus/tasks/redhat.yml
+# roles/nexus_role/tasks/redhat.yml
 
 
 - debug:

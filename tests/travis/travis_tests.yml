@@ -1,6 +1,6 @@
---- # role_nexus/tests/travis_test.yml
+--- # nexus_role/tests/travis_test.yml
 
 - hosts: localhost
   become: true
   roles:
-    - role_nexus
+    - nexus_role

@@ -1,5 +1,5 @@
 ---
-# roles/role_nexus/tasks/debian_9.yml
+# roles/nexus_role/tasks/debian_9.yml
 
 - debug:
     msg:

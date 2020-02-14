@@ -1,5 +1,5 @@
 ---
-# roles/role_nexus/tasks/centos_5.yml
+# roles/nexus_role/tasks/centos_5.yml
 
 - debug:
     msg:

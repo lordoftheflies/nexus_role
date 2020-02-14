@@ -1,7 +1,7 @@
 ---
-# file: project/role_nexus.yml
+# file: project/nexus_role.yml
 
-- hosts: role_nexus
+- hosts: nexus_role
   become: false
   gather_facts: true
   pre_tasks:
@@ -9,9 +9,9 @@
     - set_fact: fact_role_name="{{ lookup('env','ANSIBLE_ROLE_NAME') }}"
     - debug: var=fact_role_name
 
-    - set_fact: fact_role_path="{{ lookup('pipe','pwd') }}/roles/role_nexus"
+    - set_fact: fact_role_path="{{ lookup('pipe','pwd') }}/roles/nexus_role"
     - debug: var=fact_role_path
 
   roles:
 
-    - role_nexus
+    - nexus_role

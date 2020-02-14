@@ -1,5 +1,5 @@
 ---
-# roles/role_nexus/tasks/ubuntu_12.04.yml
+# roles/nexus_role/tasks/ubuntu_12.04.yml
 
 - debug:
     msg:

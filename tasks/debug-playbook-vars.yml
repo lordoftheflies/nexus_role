@@ -1,5 +1,5 @@
 ---
-# roles/role_nexus/tasks/debug-playbook-vars.yml
+# roles/nexus_role/tasks/debug-playbook-vars.yml
 
 # Debug other values or specific values you want printed last
 

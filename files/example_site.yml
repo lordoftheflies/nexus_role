@@ -15,4 +15,4 @@
     - set_fact: fact_project_path="{{ lookup('pipe','pwd') }}"
     - debug: var=fact_project_path
 
-- include: role_nexus.yml
+- include: nexus_role.yml

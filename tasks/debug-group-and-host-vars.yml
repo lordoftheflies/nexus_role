@@ -1,5 +1,5 @@
 ---
-# roles/role_nexus/tasks/debug-group-and-host-vars.yml
+# roles/nexus_role/tasks/debug-group-and-host-vars.yml
 
 # Debug group_vars and host_vars values
 
