@@ -7,7 +7,9 @@ rules:
     max: 120
     level: warning
 ignore: |
-  env
+  .venv
   .github
   .gitlab
-  .yaml-lint.yml
+  .ansible-lint
+  .env
+  _config.yml
