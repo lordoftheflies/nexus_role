@@ -8,10 +8,10 @@ lint:
   options:
     config-file: .ansible-lint
 platforms:
-  - name: role_nexus-default-xenial
+  - name: nexus_role-default-xenial
     source:
       alias: ubuntu/xenial/amd64
-  - name: role_nexus-default-bionic
+  - name: nexus_role-default-bionic
     source:
       type: image
       alias: ubuntu/bionic/amd64
