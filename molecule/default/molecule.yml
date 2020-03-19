@@ -2,7 +2,7 @@
 dependency:
   name: galaxy
 driver:
-  name: lxd
+  name: docker
 lint:
   name: yamllint
   options:
